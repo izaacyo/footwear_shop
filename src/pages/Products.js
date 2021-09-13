@@ -4,17 +4,22 @@ import { useSelector } from 'react-redux'
 const Products = () => {
 
     const shoes = useSelector((state) => state);
+    console.log(shoes)
+
 
     return (
-        <ul>
-            {shoes.map((shoe) => (
-                <li
-                    key={shoe.id}
-                >  {shoe.name}</li>
+        <div>
+            <p>this is product page </p>
 
-            ))}
-        </ul>
+            <ul>
+                {shoes.map(i => <li>{i.name}</li>)}
+            </ul>
+        </div>
     );
+
+
 };
+
+
 
 export default Products;
