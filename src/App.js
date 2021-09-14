@@ -5,7 +5,7 @@ import Footer from "./components/Footer/Footer"
 import Header from "./components/Header/Header"
 import { useEffect } from 'react';
 import { intializeShoes } from './store/actions/actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -14,9 +14,15 @@ const App = () => {
     dispatch(intializeShoes());
   }, { dispatch })
 
+  const cartItemCount = useSelector((state) =>
+    state.cart.reduce((count, curItem) => {
+      return count + curItem.quantity;
+    }, 0)
+  );
+
   return (
     <div className="App">
-      <Header />
+      <Header cartItemCount={cartItemCount} />
       <Main />
       <Footer />
     </div>
