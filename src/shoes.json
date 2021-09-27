@@ -21,7 +21,7 @@
     "title": "CONVERSE SPACE JAM CHUCK 70 UNISEX",
     "image": "images/converse-SPACE_JAM_CHUCK_70_UNISEX-Black-1.jpg",
     "description":"100% RUBBER",
-    "price": 110,
+    "price": 110.9,
     "availableSizes": ["40", "41", "42", "43"]
     },
     {
@@ -29,7 +29,7 @@
     "title": "AIR JORDAN 7 RETRO BCFC",
     "image": "images/AIR_JORDAN_7_RETRO_BCFC-WHITE_UNIVERSITY_RED_COLLEGE_NAVY-1.jpg",
     "description":"48,0% Leather, 30,0% Synthetic, 22,0% Textile",
-    "price": 185,
+    "price": 185.9,
     "availableSizes": ["40", "41", "42", "43"]
     },
     {
@@ -37,7 +37,7 @@
     "title": "NIKE AIR VAPORMAX 2021 FK",
     "image": "images/nike-AIR_VAPORMAX_2021_FK-BLACK_BLACK_BLACK_ANTHRACITE-1.webp",
     "description":"100% TEXTILE",
-    "price": 210,
+    "price": 210.9,
     "availableSizes": ["40", "41", "42", "43"]
     },
     {
@@ -45,7 +45,7 @@
     "title": "PUMA SUEDE CLASSIC XXI WOMENS",
     "image": "images/puma-Suede_Classic_XXI_WOMENS-Puma_Black_Puma_White-1.jpg",
     "description":"Leather",
-    "price": 210,
+    "price": 210.9,
     "availableSizes": ["34", "36", "37", "38"]
     },
     {
@@ -53,7 +53,7 @@
     "title": "NIKE AIR MAX 95",
     "image": "images/nike-AIR_MAX_95-SAIL_BLACK_CASHMERE_DK_DRIFTWOOD-1.webp",
     "description":"45.0% Leather 31.0% Synthetic 24.0% Textile",
-    "price": 160,
+    "price": 160.9,
     "availableSizes": ["40", "41", "42", "45"]
     },
     {
@@ -61,7 +61,7 @@
     "title": "ADIDAS ORIGINALS NMD_R1 WOMEN",
     "image": "images/adidas_originals-NMD_R1_WOMEN-CBLACK_CARBON_FTWWHT-1.jpg",
     "description":"TEXTILE, SYNTHETIC TEXTILE RUBBER",
-    "price": 140,
+    "price": 140.9,
     "availableSizes": ["34", "36", "37", "38", "40"]
     },
     {
@@ -69,7 +69,7 @@
     "title": "NEW BALANCE BB480",
     "image": "images/new_balance-BB480-WHITE_NAVY_115-1.webp",
     "description":"67% Leather + 33 Syntheic",
-    "price": 90,
+    "price": 90.9,
     "availableSizes": ["44", "45"]
     },
     {
@@ -77,7 +77,7 @@
     "title":"DR. MARTENS 1461 BEX",
     "image": "images/dr__martens-1461_Bex-Black_Smooth-1.webp",
     "description":"100% leather",
-    "price": 175,
+    "price": 175.9,
     "availableSizes": ["41", "42", "43", "44"]
     },
     {
@@ -85,7 +85,7 @@
     "title":"NIKE AIR MAX 90 SE",
     "image": "images/nike-AIR_MAX_90_SE-SIGNAL_BLUE_WHITE_GAME_ROYAL-1.webp",
     "description":"51.0% Leather 3.0% Synthetic 46.0% Textile",
-    "price": 140,
+    "price": 140.9,
     "availableSizes": ["41", "42", "43", "44"]
     },
     {
@@ -93,7 +93,7 @@
     "title":"REEBOK CLUB C REVENGE MU",
     "image": "images/reebok-CLUB_C_REVENGE_MU-WHITE_GLEGRN_NONE-1.jpg",
     "description":"Leather,Synthetic/Textile/Rubber",
-    "price": 90,
+    "price": 90.9,
     "availableSizes": ["41", "42", "43", "44", "45"]
     }
    ],
