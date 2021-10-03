@@ -3,6 +3,7 @@ import './App.css';
 import data from "../src/shoes.json";
 import Products from './components/Products';
 import Filter from './components/Filter';
+import Cart from './components/Cart';
 
 
 /*import Main from "./components/Main/Main"
@@ -39,9 +40,27 @@ export class App extends React.Component {
     super();
     this.state = {
       products: data.products,
+      cartItems: [],
       size: "",
       sort: ""
     }
+  }
+
+  addToCart = (product) => {
+    const cartItems = this.state.cartItems.slice();
+    let alreadyInCart = false
+    cartItems.forEach(item => {
+      if (item._id === product._id) {
+        item.count++;
+        alreadyInCart = true
+      }
+      this.setState({ cartItems })
+    });
+    if (!alreadyInCart) {
+      cartItems.push({ ...product, count: 1 })
+    }
+    console.log(cartItems)
+
   }
 
   sortProducts = (event) => {
@@ -95,9 +114,13 @@ export class App extends React.Component {
                 sortProducts={this.sortProducts}
 
               />
-              <Products products={this.state.products} />
+              <Products
+                products={this.state.products}
+                addToCart={this.addToCart} />
             </div>
-            <div className="sidebar"> Cart Items</div>
+            <div className="sidebar">
+              <Cart cartItems={this.state.cartItems} />
+            </div>
 
           </div>
         </main>
