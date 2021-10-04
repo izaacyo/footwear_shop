@@ -1,12 +1,12 @@
-import * as actionTypes from "../actions/actions";
+import { FETCH_PRODUCTS } from "../../types";
 
-const productReducer = (state = [], action) => {
+const productsReducer = (state = {}, action) => {
     switch (action.type) {
-        case actionTypes.GET_SHOES:
-            return action.payload;
+        case FETCH_PRODUCTS:
+            return { items: action.payload };
         default:
             return state;
     }
 };
 
-export default productReducer
+export default productsReducer
