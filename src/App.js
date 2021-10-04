@@ -40,7 +40,8 @@ export class App extends React.Component {
     super();
     this.state = {
       products: data.products,
-      cartItems: [],
+      cartItems: localStorage.getItem("cartItems")
+        ? JSON.parse(localStorage.getItem("cartItems")) : [],
       size: "",
       sort: ""
     }
@@ -48,7 +49,11 @@ export class App extends React.Component {
 
   removeFromCart = (product) => {
     const cartItems = this.state.cartItems.slice();
-    this.setState({ cartItems: cartItems.filter(x => x._id !== product._id) })
+    this.setState({ cartItems: cartItems.filter(x => x._id !== product._id) });
+    localStorage.setItem(
+      "cartItems",
+      JSON.stringify(cartItems.filter(x => x._id !== product._id)));
+
   }
 
   addToCart = (product) => {
@@ -60,11 +65,11 @@ export class App extends React.Component {
         alreadyInCart = true
       }
       this.setState({ cartItems })
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
     });
     if (!alreadyInCart) {
       cartItems.push({ ...product, count: 1 })
     }
-    console.log(cartItems)
 
   }
 
