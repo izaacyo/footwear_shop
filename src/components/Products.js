@@ -54,12 +54,35 @@ export default class Products extends Component {
                             onRequestClose={this.closeModal}>
                             <Zoom>
                                 <button onClick={this.closeModal}> x </button>
-                                <div>
-
+                                <div className="product-details">
+                                    <img src={product.image} alt={product.title}></img>
+                                    <div className="product-details-description">
+                                        <p>
+                                            <strong>
+                                                {product.title}
+                                            </strong>
+                                        </p>
+                                        <p>
+                                            Available Sizes: {" "}
+                                            {product.availableSizes.map(x => (
+                                                <span> {" "} <button className="button"></button>{x}</span>
+                                            ))}
+                                        </p>
+                                        <div className="product-price">
+                                            <div>
+                                                {formatCurrency(product.price)}
+                                            </div>
+                                            <button className="button primary" onClick={() => {
+                                                this.props.addToCart(product);
+                                                this.closeModal()
+                                            }}>
+                                                Add to cart
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
-
-                            </Zoom>
-                        </Modal>
+                            </Zoom >
+                        </Modal >
                     )
                 }
             </div >
