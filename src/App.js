@@ -1,83 +1,12 @@
 import React from 'react';
 import './App.css';
-import data from "../src/shoes.json";
 import Products from './components/Products';
 import Filter from './components/Filter';
 import Cart from './components/Cart';
 import store from './store/store'
 import { Provider } from 'react-redux';
 
-
-/*import Main from "./components/Main/Main"
-import Footer from "./components/Footer/Footer"
-import Header from "./components/Header/Header"
-import { useEffect } from 'react';
-import { intializeShoes } from './store/actions/actions';
-import { useDispatch, useSelector } from 'react-redux';*/
-
-/*const App = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(intializeShoes());
-  }, { dispatch })
-
-  const cartItemCount = useSelector((state) =>
-    state.cart.reduce((count, curItem) => {
-      return count + curItem.quantity;
-    }, 0)
-  );
-
-  return (
-    <div className="App">
-      <Header cartItemCount={cartItemCount} />
-      <Main />
-      <Footer />
-    </div>
-  );
-}*/
-
 export class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      products: data.products,
-      cartItems: localStorage.getItem("cartItems")
-        ? JSON.parse(localStorage.getItem("cartItems")) : [],
-      size: "",
-      sort: ""
-    }
-  }
-
-  createOrder = (order) => {
-    alert('Need to save order for' + order.name)
-  }
-
-  removeFromCart = (product) => {
-    const cartItems = this.state.cartItems.slice();
-    this.setState({ cartItems: cartItems.filter(x => x._id !== product._id) });
-    localStorage.setItem(
-      "cartItems",
-      JSON.stringify(cartItems.filter(x => x._id !== product._id)));
-
-  }
-
-  addToCart = (product) => {
-    const cartItems = this.state.cartItems.slice();
-    let alreadyInCart = false
-    cartItems.forEach(item => {
-      if (item._id === product._id) {
-        item.count++;
-        alreadyInCart = true
-      }
-      this.setState({ cartItems })
-      localStorage.setItem("cartItems", JSON.stringify(cartItems));
-    });
-    if (!alreadyInCart) {
-      cartItems.push({ ...product, count: 1 })
-    }
-
-  }
   render() {
     return (
       <Provider store={store}>
@@ -89,22 +18,16 @@ export class App extends React.Component {
             <div className="content">
               <div className="main">
                 <Filter />
-                <Products
-                  addToCart={this.addToCart} />
+                <Products />
               </div>
               <div className="sidebar">
-                <Cart cartItems={this.state.cartItems}
-                  removeFromCart={this.removeFromCart}
-                  createOrder={this.createOrder} />
+                <Cart />
               </div>
-
             </div>
           </main>
           <footer>
             All rights reserved
           </footer>
-
-
         </div>
       </Provider>
     )
