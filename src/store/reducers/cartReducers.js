@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../../types";
+import { ADD_TO_CART, REMOVE_FROM_CART, SET_SIZE } from "../../types";
 
 export const cartReducer = (
     state = { cartItems: JSON.parse(localStorage.getItem("cartItems") || "[]") },
@@ -9,6 +9,11 @@ export const cartReducer = (
             return { cartItems: action.payload.cartItems };
         case REMOVE_FROM_CART:
             return { cartItems: action.payload.cartItems };
+        case SET_SIZE:
+            return {
+                ...state,
+                size: action.payload.size,
+            }
         default:
             return state;
     }

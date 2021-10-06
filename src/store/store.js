@@ -3,13 +3,15 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk'
 
 import { cartReducer } from './reducers/cartReducers';
+import { orderReducer } from './reducers/orderReducers';
 import { productsReducer } from './reducers/productReducers';
 
 const initialState = {}
 
 const rootReducer = combineReducers({
     products: productsReducer,
-    cart: cartReducer
+    cart: cartReducer,
+    order: orderReducer
 })
 
 
