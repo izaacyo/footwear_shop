@@ -107,4 +107,4 @@ app.delete("/api/orders/:id", async (req, res) => {
 });
 
 const port = process.env.PORT;
-app.listen(port, () => console.log("server at http://localhost:3000"))
+app.listen(3000, () => console.log(port))
