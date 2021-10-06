@@ -13,7 +13,7 @@ class App extends React.Component {
         <BrowserRouter>
           <div className="grid-container">
             <header>
-              <Link to="/">React Shopping Cart</Link>
+              <Link to="/">Redux Shopping Cart</Link>
               <Link to="/admin">Admin</Link>
             </header>
             <main>
