@@ -2,15 +2,27 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const shortid = require("shortid");
+require('dotenv').config()
 
 const app = express();
 app.use(bodyParser.json());
 
 
-mongoose.connect("mongodb://localhost/react-shopping-cart-db", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
+const connectDB = async () => {
+    try {
+        await mongoose.connect(process.env.MONGO_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+
+        console.log("MongoDB connection SUCCESS");
+    } catch (error) {
+        console.error("MongoDB connection FAIL");
+        process.exit(1);
+    }
+};
+
+connectDB()
 
 
 
@@ -94,5 +106,5 @@ app.delete("/api/orders/:id", async (req, res) => {
     res.send(order);
 });
 
-const port = process.env.PORT || 5000;
-app.listen(port, () => console.log("server at http://localhost:5000"))
+const port = process.env.PORT;
+app.listen(port, () => console.log("server at http://localhost:3000"))

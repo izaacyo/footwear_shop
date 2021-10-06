@@ -7,7 +7,7 @@ class Filter extends Component {
     render() {
         return (
             !this.props.filteredProducts ?
-                (<div> Loading products</div>)
+                (<div> </div>)
                 :
                 <div>
                     <div className="filter-result">{this.props.filteredProducts.length} Products</div>
