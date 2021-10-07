@@ -41,14 +41,15 @@ const Button = styled.button`
   border: none;
   background-color: teal;
   color: white;
+  cursor:pointer
 `;
 const Newsletter = () => {
     return (
         <Container>
-            <Title></Title>
-            <Desc></Desc>
+            <Title> Newsletter </Title>
+            <Desc> Get timely updates from your favorite products.</Desc>
             <InputContainer>
-              <Input/>
+              <Input placeholder="Your email"/>
               <Button>
                 <Send />
               </Button>
