@@ -5,7 +5,10 @@ import Announcement from '../components/Announcement'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import { mobile } from "../responsive";
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
+import StripeCheckout from "react-stripe-checkout"
+
+const KEY = process.env.REACT_APP_STRIPE
 
 
 const Container = styled.div`
@@ -232,7 +235,17 @@ const Cart = () => {
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
             </SummaryItem>
+            <StripeCheckout
+             name= "Izaac Shop" 
+             image = "https://avatars.githubusercontent.com/u/1486366?v=4"
+             billingAddress
+             shippingAddress
+             description= "Your total is $20"
+             amount = {2000}
+             token={onToken}
+             stripeKey={KEY} >
             <Button>CHECKOUT NOW</Button>
+            </StripeCheckout>
           </Summary>
         </Bottom>
       </Wrapper>

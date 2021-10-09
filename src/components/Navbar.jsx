@@ -86,7 +86,9 @@ console.log(quantity)
                  </SearchContainer>
              </Left>
              <Center>
+                 <Link to="/">
                  <Logo>IZAAC:</Logo>
+                 </Link>
              </Center>
              <Right>
                  <MenuItem> Register</MenuItem>
