@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Add, Remove } from '@material-ui/icons'
 import styled from 'styled-components'
 import Navbar from '../components/Navbar'
@@ -6,6 +6,8 @@ import Announcement from '../components/Announcement'
 import Newsletter from "../components/Newsletter"
 import Footer from "../components/Footer"
 import { mobile } from "../responsive";
+import {useLocation} from "react-router-dom"
+import { publicRequest } from '../requestMethods'
 
 
 const Container = styled.div``;
@@ -125,13 +127,29 @@ const Button = styled.button`
 
 
 const Product = () => {
+
+  const location = useLocation();
+const id = location.pathname.split("/")[2];
+
+const [product, setProduct] = useState({});
+
+useEffect(() => {
+
+  const getProduct = async () => {
+    try {
+      const res =await publicRequest.get("/products/find/" + id)
+      setProduct(res.data)
+  }catch{}}
+getProduct()
+}, [id]);
+
     return (
         <Container>
             <Navbar/>
             <Announcement/>
             <Wrapper>
                 <ImgContainer>
-                <Image src="">
+                <Image src={product.img}>
                     </Image>
                 </ImgContainer>
                 

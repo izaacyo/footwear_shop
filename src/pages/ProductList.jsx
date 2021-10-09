@@ -61,7 +61,7 @@ const handleFilters = (e) => {
         <Container>
             <Navbar/>
             <Announcement/>
-            <Title>Shoes</Title>
+            <Title>{cat}</Title>
             <FilterContainer>
             <Filter>
           <FilterText>Filter Products:</FilterText>
@@ -69,22 +69,22 @@ const handleFilters = (e) => {
             <Option disabled>
               Color
             </Option>
-            <Option>White</Option>
-            <Option>Black</Option>
-            <Option>Red</Option>
-            <Option>Blue</Option>
-            <Option>Yellow</Option>
-            <Option>Green</Option>
+            <Option>white</Option>
+            <Option>black</Option>
+            <Option>red</Option>
+            <Option>blue</Option>
+            <Option>yellow</Option>
+            <Option>green</Option>
           </Select>
           <Select name="size" onChange={handleFilters}>
             <Option disabled >
               Size
             </Option>
-            <Option>XS</Option>
-            <Option>S</Option>
-            <Option>M</Option>
-            <Option>L</Option>
-            <Option>XL</Option>
+            <Option>40</Option>
+            <Option>41</Option>
+            <Option>42</Option>
+            <Option>43</Option>
+            <Option>44</Option>
           </Select>
         </Filter>
         <Filter>
