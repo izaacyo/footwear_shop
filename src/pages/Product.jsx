@@ -8,6 +8,8 @@ import Footer from "../components/Footer"
 import { mobile } from "../responsive";
 import {useLocation} from "react-router-dom"
 import { publicRequest } from '../requestMethods'
+import { addProduct } from '../redux/cartRedux'
+import { useDispatch } from 'react-redux'
 
 
 const Container = styled.div``;
@@ -130,11 +132,11 @@ const Product = () => {
 
   const location = useLocation();
 const id = location.pathname.split("/")[2];
-
 const [product, setProduct] = useState({});
 const [quantity, setQuantity] = useState(1);
 const [color, setColor] = useState("");
 const [size, setSize] = useState("");
+const dispatch = useDispatch()
 
 useEffect(() => {
 
@@ -161,8 +163,9 @@ const handleQuantity = (type) => {
 
 const handleClick = () => {
 //update cart
-
-
+dispatch(
+addProduct({...product, id, quantity, color, size})
+  )
 }
 
     return (
@@ -203,7 +206,7 @@ const handleClick = () => {
                      <Amount>{quantity}</Amount>
                      <Add onClick={() => handleQuantity("inc")} />
                     </AmountContainer>
-                   <Button onClick={handleClick()}>ADD TO CART</Button>
+                   <Button onClick={handleClick}>ADD TO CART</Button>
                    </AddContainer>
                 </InfoContainer>
             </Wrapper>
