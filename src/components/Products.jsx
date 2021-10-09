@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from "styled-components";
 import { popularProducts } from '../data';
 import Product from './Product';
@@ -10,7 +10,21 @@ flex-wrap: wrap;
 justify-content: space-between;
 `;
 
-const Products = () => {
+const Products = ({cat, filters, sort}) => {
+
+
+const [products, setProducts] = useState([])
+const [filteredProducts, setFilteredProducts] = useState([])
+
+useEffect(()=> {
+
+    
+
+
+    //when cat changes run the useEffect function
+}, [cat])
+
+
     return (
         <Container>
 {popularProducts.map(item => (
