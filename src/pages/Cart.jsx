@@ -193,6 +193,7 @@ useEffect(() => {
 }, [stripeToken, cart.total, history])
 
 
+
   return (
     <Container>
       <Navbar />
