@@ -47,9 +47,9 @@ const Center = styled.div`
 flex: 1;
 text-align:center`;
 
-const Logo = styled.h1`
-font-weight:bold;
-${mobile({fontSize:"24px"})}
+const Logo = styled.img`
+width = "220px";
+${mobile({width:"100px", padding:"15px"})}
 `
 
 const Right = styled.div`
@@ -57,7 +57,6 @@ flex: 1;
 display: flex;
 align-items: center;
 justify-content: flex-end;
-
 ${mobile({ flex:2, justifyContent:"center" })}
 `;
 
@@ -71,8 +70,6 @@ ${mobile({fontSize:"12px", marginLeft:"10px"})}
 
 const Navbar = () => {
 const quantity = useSelector(state => state.cart.quantity)
-
-console.log(quantity)
     return (
         <Container>
          <Wrapper>
@@ -87,7 +84,8 @@ console.log(quantity)
              </Left>
              <Center>
                  <Link to="/">
-                 <Logo>IZAAC:</Logo>
+                 <Logo src= {"/images/SneakersLoop.png"} alt={"logo"}> 
+                 </Logo>
                  </Link>
              </Center>
              <Right>

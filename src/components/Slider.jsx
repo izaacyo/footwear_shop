@@ -12,6 +12,7 @@ const Container = styled.div`
   display: flex;
   position: relative;
   overflow: hidden;
+  margin-top:12rem;
   ${mobile({display:"none"})}
 
 `;
