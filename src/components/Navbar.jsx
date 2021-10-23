@@ -89,8 +89,12 @@ const quantity = useSelector(state => state.cart.quantity)
                  </Link>
              </Center>
              <Right>
-                 <MenuItem> Register</MenuItem>
-                 <MenuItem> Sign IN</MenuItem>
+                 <MenuItem>
+                 <Link to = "/register"> Register
+                 </Link>
+                 </MenuItem>
+                 <MenuItem> <Link to = "/login"> Log In
+                 </Link></MenuItem>
                  <Link to="/cart"> 
                  <MenuItem> 
                      <Badge badgeContent={quantity} color="primary">

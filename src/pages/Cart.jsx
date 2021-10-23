@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import { Add, Remove } from '@material-ui/icons'
 import styled from 'styled-components'
 import Announcement from '../components/Announcement'
 import Footer from '../components/Footer'
@@ -117,14 +116,14 @@ const ProductAmountContainer = styled.div`
 `;
 
 const ProductAmount = styled.div`
-  font-size: 24px;
+  font-size: 20px;
   margin: 5px;
   ${mobile({ margin: "5px 15px" })}
 
 `;
 
 const ProductPrice = styled.div`
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 200;
   ${mobile({ marginBottom: "20px" })}
 
@@ -176,6 +175,8 @@ const Cart = () => {
  const onToken = (token) => {
    setStripeToken(token)
  }
+
+ 
 
 useEffect(() => {
   const makeRequest = async () => {
@@ -230,9 +231,7 @@ useEffect(() => {
               </ProductDetail>
               <PriceDetail>
                 <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>{product.quantity}</ProductAmount>
-                  <Remove />
+                  <ProductAmount>Quantity : {product.quantity}</ProductAmount>
                 </ProductAmountContainer>
                 <ProductPrice>$ {product.price*product.quantity }</ProductPrice>
               </PriceDetail>
