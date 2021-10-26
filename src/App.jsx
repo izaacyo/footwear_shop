@@ -35,11 +35,7 @@ const App = () => {
         <Route path="/success">
           <Success />
         </Route>
-        <Route path="/login">{!userId ? <Redirect to="/" /> : <Login />}</Route>
-        <Route path="/register" > 
-         {!userId ? <Redirect to="/" /> : <Register />}
-        </Route>
-        <Body />
+        <Body/>
       </Switch>
     </Router>
   );

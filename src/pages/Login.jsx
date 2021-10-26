@@ -69,39 +69,40 @@ const Error=styled.span`
 color:red
 `
 
+const initialState = {
+  email: '',
+  password: '',
+  err: '',
+  success: ''
+}
+
+
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const dispatch = useDispatch();
-  const { isFetching, error } = useSelector((state) => state.user);
+  const [user, setUser] = useState(initialState)
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    login(dispatch, { username, password });
-    console.log(username, password)
-  };
+
+  const {email, password, err, success} = user
+
 
   return (
     <Container>
       <Wrapper>
-        <Title>SIGN IN</Title>
+        <Title>Login</Title>
         <Form>
-          <Input
-            placeholder="username"
-            onChange={(e) => setUsername(e.target.value)}
+          <Input type="text" id="email" name="email"
+            placeholder="Email Address" value={email}
           />
           <Input
-            placeholder="password"
+            placeholder="Password"
             type="password"
-            onChange={(e) => setPassword(e.target.value)}
+            name="password"
+            value={password}
           />
-          <Button onClick={handleClick} disabled={isFetching}>
+          <Button type= "submit">
             LOGIN
           </Button>
-          {error && <Error>Something went wrong...</Error>}
-          <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-          <Link to = "/register">CREATE A NEW ACCOUNT</Link>
+          <Link to="/forgot_password">DO NOT YOU REMEMBER THE PASSWORD?</Link>
         </Form>
       </Wrapper>
     </Container>
