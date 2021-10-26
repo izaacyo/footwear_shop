@@ -1,8 +1,10 @@
 import React, {useState } from 'react'
 import styled from 'styled-components'
-import { login} from '../redux/apiCalls';
 import {mobile} from "../responsive";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import axios from 'axios'
+import { useHistory } from 'react-router';
+import { showErrMsg, showSuccessMsg} from "../components/utils/notification/Notification"
 
 
 const Container = styled.div`
@@ -65,9 +67,6 @@ const Link = styled.a`
   cursor: pointer;
 `;
 
-const Error=styled.span`
-color:red
-`
 
 const initialState = {
   email: '',
@@ -85,19 +84,46 @@ const Login = () => {
   const {email, password, err, success} = user
 
 
+  const handleChangeInput = e => {
+    const {name, value} = e.target
+    setUser({...user, [name]:value, err: '', success: ''})
+}
+
+
+
+const handleSubmit = async e => {
+  e.preventDefault()
+  try {
+      const res = await axios.post('/user/login', {email, password})
+     console.log(res)
+
+  } catch (err) {
+      err.response.data.msg && 
+      setUser({...user, err: err.response.data.msg, success: ''})
+  }
+}
+
   return (
     <Container>
       <Wrapper>
         <Title>Login</Title>
-        <Form>
-          <Input type="text" id="email" name="email"
-            placeholder="Email Address" value={email}
+        
+        {err && showErrMsg(err)}
+        {success && showSuccessMsg(success)}
+        <Form onSubmit={handleSubmit}>
+          <Input type="text" 
+          id="email"
+          name="email"
+          placeholder="Email Address"
+          value={email}
+          onChange={handleChangeInput}
           />
           <Input
             placeholder="Password"
             type="password"
             name="password"
             value={password}
+            onChange={handleChangeInput}
           />
           <Button type= "submit">
             LOGIN
