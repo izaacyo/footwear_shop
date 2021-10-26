@@ -3,9 +3,11 @@ import styled from 'styled-components'
 import {mobile} from "../responsive";
 import { useDispatch } from 'react-redux';
 import axios from 'axios'
-import { useHistory } from 'react-router';
+import { useHistory, Link } from 'react-router-dom';
 import { showErrMsg, showSuccessMsg} from "../components/utils/notification/Notification"
 import {dispatchLogin} from "../redux/actions/authActions"
+
+
 
 
 const Container = styled.div`
@@ -61,13 +63,12 @@ const Button = styled.button`
   }
 `;
 
-const Link = styled.a`
-  margin: 5px 0px;
-  font-size: 12px;
-  text-decoration: underline;
-  cursor: pointer;
-`;
-
+const linkStyle = {
+  margin: "5px 0px",
+  fontSize: "12px",
+  textDecoration: "underline",
+  cursor: "pointer",
+}
 
 const initialState = {
   email: '',
@@ -136,8 +137,11 @@ const handleSubmit = async e => {
           <Button type= "submit">
             LOGIN
           </Button>
-          <Link to="/forgot_password">DO NOT YOU REMEMBER THE PASSWORD?</Link>
+          <Link style={linkStyle} to="/forgot_password">DO NOT YOU REMEMBER THE PASSWORD?</Link>
         </Form>
+
+        <p>New Customer? <Link to="/register">Register</Link></p>
+
       </Wrapper>
     </Container>
   );
