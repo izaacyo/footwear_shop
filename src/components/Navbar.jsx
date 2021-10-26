@@ -5,6 +5,7 @@ import {useSelector} from "react-redux"
 import { Link } from 'react-router-dom';
 import {mobile} from "../responsive"
 import "./Navbar.css"
+import axios from 'axios';
 
 
 const Left = styled.div`
@@ -70,7 +71,18 @@ const Navbar = () => {
 
     const {user, isLogged} = auth 
 
-const handleLogout = async ()
+const handleLogout = async () =>  {
+
+    try {
+        await axios.get('/user/logout')
+        localStorage.removeItem('firstLogin')
+        window.location.href = "/"
+
+    } catch (error) {
+        window.location.href = "/"
+        
+    }
+}
 
 
 const userLink = () => {
