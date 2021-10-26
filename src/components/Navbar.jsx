@@ -70,7 +70,7 @@ ${mobile({fontSize:"12px", marginLeft:"10px"})}
 //Header = NAVBAR.JSX 
 
 const Navbar = () => {
-const quantity = useSelector(state => state.cart.quantity)
+//const quantity = useSelector(state => state.cart.quantity)
     return (
         <Container>
          <Wrapper>
@@ -98,7 +98,7 @@ const quantity = useSelector(state => state.cart.quantity)
 
                  <Link to="/cart"> 
                  <MenuItem> 
-                     <Badge badgeContent={quantity} color="primary">
+                     <Badge color="primary">
                      <ShoppingCartOutlined   />
                      </Badge>
                      </MenuItem>

@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios'
 import { useHistory } from 'react-router';
 import { showErrMsg, showSuccessMsg} from "../components/utils/notification/Notification"
+import {dispatchLogin} from "../redux/actions/authActions"
 
 
 const Container = styled.div`
@@ -79,6 +80,8 @@ const initialState = {
 
 const Login = () => {
   const [user, setUser] = useState(initialState)
+  const dispatch = useDispatch()
+  const history = useHistory()
 
 
   const {email, password, err, success} = user
@@ -95,7 +98,12 @@ const handleSubmit = async e => {
   e.preventDefault()
   try {
       const res = await axios.post('/user/login', {email, password})
-     console.log(res)
+      setUser({...user, err: '', success: res.data.msg})
+
+      localStorage.setItem('firstLogin', true)
+
+      dispatch(dispatchLogin())
+      history.push("/")
 
   } catch (err) {
       err.response.data.msg && 
