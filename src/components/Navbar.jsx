@@ -2,9 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import {Search, ShoppingCartOutlined} from "@material-ui/icons"
 import { Badge } from '@material-ui/core';
-import {mobile} from "../responsive"
+import axios from 'axios'
 import {useSelector} from "react-redux"
 import { Link } from 'react-router-dom';
+import {mobile} from "../responsive"
+
 
 const Container = styled.div`
 height: 60px;
@@ -70,7 +72,21 @@ ${mobile({fontSize:"12px", marginLeft:"10px"})}
 //Header = NAVBAR.JSX 
 
 const Navbar = () => {
-//const quantity = useSelector(state => state.cart.quantity)
+
+    const auth = useSelector( state => state.auth)
+
+    const {user, isLogged} = auth 
+
+const userLink = () => {
+    return <li>
+        <Link to= "/">
+        <img src={user.avatar} alt="" />
+        {user.name}
+        </Link>
+    </li>
+}
+
+
     return (
         <Container>
          <Wrapper>
@@ -92,10 +108,13 @@ const Navbar = () => {
 
              <Right>
                  <MenuItem> 
-                 <Link to = "/login" style={{textDecoration: "none"}}><i className="fas fa-user"></i> Sign In
-                 </Link>
-                 </MenuItem>
+                 {
+                     isLogged
+                     ? userLink()
+                     :<Link to = "/login" style={{textDecoration: "none"}}><i className="fas fa-user"></i> Sign In </Link>
 
+                 }
+                 </MenuItem>               
                  <Link to="/cart"> 
                  <MenuItem> 
                      <Badge color="primary">
