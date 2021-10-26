@@ -12,7 +12,7 @@ import Success from "./pages/Success";
 import Body from "./components/body/Body"
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { dispatchLogin } from './redux/actions/authActions';
+import { dispatchLogin, fetchUser, dispatchGetUser } from './redux/actions/authActions';
 
 const App = () => {
   const dispatch = useDispatch()
@@ -39,10 +39,15 @@ const App = () => {
     if(token){
       const getUser = () => {
         dispatch(dispatchLogin())
+
+      //get all user data
+        return fetchUser(token).then(res => {
+          dispatch(dispatchGetUser(res))
+        })
       }
       getUser()
     }
-  },[token]) 
+  },[token, dispatch]) 
 
   return (
     <Router>

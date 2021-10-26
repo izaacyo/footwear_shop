@@ -1,27 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import {Search, ShoppingCartOutlined} from "@material-ui/icons"
-import { Badge } from '@material-ui/core';
-import axios from 'axios'
+import {Search} from "@material-ui/icons"
 import {useSelector} from "react-redux"
 import { Link } from 'react-router-dom';
 import {mobile} from "../responsive"
+import "./Navbar.css"
 
 
-const Container = styled.div`
-height: 60px;
-${mobile({height:"50px"})}
-
-`;
-
-const Wrapper = styled.div` 
-padding: 10px 20px;
-display: flex;
-align-items:center;
-justify-content: space-between;
-${mobile({padding:"10px 0px"})}
-
-`
 const Left = styled.div`
 flex: 1;
 display: flex;
@@ -47,11 +32,12 @@ ${mobile({width:"50px"})}
 
 const Center = styled.div`
 flex: 1;
-text-align:center`;
+text-align:center
+`;
 
 const Logo = styled.img`
-width = "220px";
-${mobile({width:"100px", padding:"15px"})}
+width : 300px;
+${mobile({width:"100px", padding:"10px"})}
 `
 
 const Right = styled.div`
@@ -62,14 +48,21 @@ justify-content: flex-end;
 ${mobile({ flex:2, justifyContent:"center" })}
 `;
 
-const MenuItem = styled.a`
-font-size:14px;
-cursor: pointer;
-margin-left:25px;
-${mobile({fontSize:"12px", marginLeft:"10px"})}
 
-`
-//Header = NAVBAR.JSX 
+const Img = styled.img`
+    width: 40px;
+    height: 40px;
+    transform: translateY(10px);
+    border-radius: 50%;
+` 
+
+
+const linkStyle = {
+    textTransform: "uppercase",
+    overflow: "hidden", 
+    textDecoration: "none", 
+    letterSpacing:"1.5px"
+  }
 
 const Navbar = () => {
 
@@ -77,19 +70,29 @@ const Navbar = () => {
 
     const {user, isLogged} = auth 
 
+const handleLogout = async ()
+
+
 const userLink = () => {
-    return <li>
-        <Link to= "/">
-        <img src={user.avatar} alt="" />
-        {user.name}
-        </Link>
-    </li>
+
+ return  <li className="drop-nav">
+ <Link style={linkStyle} to="#" className="avatar">
+ <Img src={user.avatar} alt=""/> {user.name} <i className="fas fa-angle-down"></i>
+ </Link>
+ <ul className="dropdown">
+     <li><Link to="/profile">Profile</Link></li>
+     <li><Link to="/" onClick={handleLogout} >Logout</Link></li>
+ </ul>
+</li>
 }
 
 
-    return (
-        <Container>
-         <Wrapper>
+const transForm = {
+    transform: isLogged ? "translateY(-5px)" : 0
+}
+
+return (
+    <header>
              <Left>
                  <Language>
                      EN
@@ -106,26 +109,19 @@ const userLink = () => {
                  </Link>
              </Center>
 
-             <Right>
-                 <MenuItem> 
-                 {
-                     isLogged
-                     ? userLink()
-                     :<Link to = "/login" style={{textDecoration: "none"}}><i className="fas fa-user"></i> Sign In </Link>
+       <Right>
+        <ul style={transForm}>
+            <li><Link style={{textDecoration:"none"}} to="/"><i className="fas fa-shopping-cart"></i> Cart</Link></li>
+            {
+                isLogged
+                ? userLink()
+                :<li><Link to="/login"><i className="fas fa-user"></i> Sign in</Link></li>
+            }
+            
+        </ul>
+        </Right> 
+    </header>
+)}
 
-                 }
-                 </MenuItem>               
-                 <Link to="/cart"> 
-                 <MenuItem> 
-                     <Badge color="primary">
-                     <ShoppingCartOutlined   />
-                     </Badge>
-                     </MenuItem>
-                </Link>
-             </Right>
-             </Wrapper>      
-         </Container>            
-    )
-}
 
 export default Navbar
