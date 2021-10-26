@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import './Profile.css'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { isLength, isMatch } from '../../components/utils/validation/Validation'
 import { showErrMsg, showSuccessMsg } from '../../components/utils/notification/Notification'
 import { fetchAllUsers, dispatchGetAllUsers } from '../../redux/actions/userActions'
+import './Profile.css'
 
 const initialState = {
     name: '',
@@ -143,7 +143,7 @@ function Profile() {
                 {loading && <h3>Loading.....</h3>}
             </div>
 
-            <div className="profile-page">
+            <div className="profile_page">
                 <div className="col-left">
                     <h2> {isAdmin ? "Admin Profile" : "User Profile"}</h2>
 
