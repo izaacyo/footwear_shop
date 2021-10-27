@@ -6,7 +6,7 @@ import axios from 'axios'
 import { useHistory, Link } from 'react-router-dom';
 import { showErrMsg, showSuccessMsg} from "../components/utils/notification/Notification"
 import {dispatchLogin} from "../redux/actions/authActions"
-
+import {GoogleLogin} from "react-google-login"
 
 
 
@@ -112,6 +112,23 @@ const handleSubmit = async e => {
   }
 }
 
+
+const responseGoogle = async (response) => {
+  try {
+      const res = await axios.post('/user/google_login', {tokenId: response.tokenId})
+
+      setUser({...user, error:'', success: res.data.msg})
+      localStorage.setItem('firstLogin', true)
+
+      dispatch(dispatchLogin())
+      history.push('/')
+  } catch (err) {
+      err.response.data.msg && 
+      setUser({...user, err: err.response.data.msg, success: ''})
+  }
+}
+
+
   return (
     <Container>
       <Wrapper>
@@ -140,6 +157,15 @@ const handleSubmit = async e => {
           <Link style={linkStyle} to="/forgot_password">DO NOT YOU REMEMBER THE PASSWORD?</Link>
         </Form>
 
+        <div className="hr">Or Login With</div>
+
+    <GoogleLogin
+        clientId="829524182451-pcpd8qi5vho281stsf638t4g2po0tapl.apps.googleusercontent.com"
+        buttonText="Login with google"
+        onSuccess={responseGoogle}
+        cookiePolicy={'single_host_origin'}
+    />
+    
         <p>New Customer? <Link to="/register">Register</Link></p>
 
       </Wrapper>
