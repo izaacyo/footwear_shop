@@ -73,6 +73,12 @@
   background: #fee;
   padding: 0 5px;
 }
+
+.profile_page .col-left p {
+  font-size: 10px;
+  color: black;
+  text-transform: uppercase;
+}
 .profile_page .col-left button {
   background: #333;
   color: white;
