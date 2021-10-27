@@ -7,6 +7,7 @@ import { useHistory, Link } from 'react-router-dom';
 import { showErrMsg, showSuccessMsg} from "../components/utils/notification/Notification"
 import {dispatchLogin} from "../redux/actions/authActions"
 import {GoogleLogin} from "react-google-login"
+import FacebookLogin from 'react-facebook-login';
 
 
 
@@ -70,14 +71,34 @@ const linkStyle = {
   cursor: "pointer",
 }
 
+
+const socialStyle = {
+  /*width: "100%",
+  margin: "10px 0",
+  height: "50px",
+  fontSize: "14px",
+  fontWeight: "200",
+  textTransform: "capitalize",
+  letterSpacing: "1.3px",
+  boxShadow: "0 2px 4px #777",*/
+  /*margin:"5px",
+  width: "165px",
+  height:"35px",
+  borderRadius: "4px",
+  background: "#db3236",
+  color:"white",
+  border: "0px transparent",
+  textAlign: "center",*/
+
+}
+
+
 const initialState = {
   email: '',
   password: '',
   err: '',
   success: ''
 }
-
-
 
 const Login = () => {
   const [user, setUser] = useState(initialState)
@@ -128,6 +149,22 @@ const responseGoogle = async (response) => {
   }
 }
 
+const responseFacebook = async (response) => {
+  try {
+      const {accessToken, userID} = response
+      const res = await axios.post('/user/facebook_login', {accessToken, userID})
+
+      setUser({...user, error:'', success: res.data.msg})
+      localStorage.setItem('firstLogin', true)
+
+      dispatch(dispatchLogin())
+      history.push('/')
+  } catch (err) {
+      err.response.data.msg && 
+      setUser({...user, err: err.response.data.msg, success: ''})
+  }
+}
+
 
   return (
     <Container>
@@ -159,12 +196,19 @@ const responseGoogle = async (response) => {
 
         <div className="hr">Or Login With</div>
 
-    <GoogleLogin
+       <GoogleLogin
         clientId="829524182451-pcpd8qi5vho281stsf638t4g2po0tapl.apps.googleusercontent.com"
         buttonText="Login with google"
         onSuccess={responseGoogle}
         cookiePolicy={'single_host_origin'}
-    />
+        />
+        
+        <FacebookLogin
+                appId="935416427076426"
+                autoLoad={false}
+                fields="name,email,picture"
+                callback={responseFacebook} 
+                />
     
         <p>New Customer? <Link to="/register">Register</Link></p>
 
