@@ -13,6 +13,7 @@ import Profile from '../../pages/profile/Profile'
 
 import { useSelector } from "react-redux"
 
+
 function Body() {
 
     const auth = useSelector(state => state.auth)

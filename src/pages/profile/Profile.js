@@ -32,16 +32,6 @@ function Profile() {
     const [loading, setLoading] = useState(false)
     const [callback, setCallback] = useState(false)
 
-    const dispatch = useDispatch()
-
-
-    useEffect(() => {
-        if (isAdmin) {
-            fetchAllUsers(token).then(res => {
-                dispatch(dispatchGetAllUsers(res))
-            })
-        }
-    }, [token, isAdmin, dispatch, callback])
 
 
 
