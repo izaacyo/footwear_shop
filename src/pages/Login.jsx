@@ -197,14 +197,14 @@ const responseFacebook = async (response) => {
         <div className="hr">Or Login With</div>
 
        <GoogleLogin
-        clientId="829524182451-pcpd8qi5vho281stsf638t4g2po0tapl.apps.googleusercontent.com"
+        clientId="396272530115-9bn2avrvtlm39dn4pvaursrpre139umk.apps.googleusercontent.com"
         buttonText="Login with google"
         onSuccess={responseGoogle}
         cookiePolicy={'single_host_origin'}
         />
         
         <FacebookLogin
-                appId="935416427076426"
+                appId="1048444269323123"
                 autoLoad={false}
                 fields="name,email,picture"
                 callback={responseFacebook} 
